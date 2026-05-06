@@ -1,0 +1,15 @@
+ADD TABLE "AuditLog"
+  AREA "Data Area"
+  DUMP-NAME "AuditLog"
+
+ADD FIELD "logId" OF "AuditLog" AS integer FORMAT ">>>>9" INITIAL "0" POSITION 3 ORDER 10
+ADD FIELD "userId" OF "AuditLog" AS integer FORMAT ">>>>9" INITIAL "0" POSITION 4 ORDER 20
+ADD FIELD "action" OF "AuditLog" AS character FORMAT "x(50)" INITIAL "" POSITION 5 ORDER 30
+ADD FIELD "timestamp" OF "AuditLog" AS DATETIME FORMAT "99/99/9999 HH:MM:SS" INITIAL ? POSITION 6 ORDER 40
+ADD FIELD "details" OF "AuditLog" AS character FORMAT "x(200)" INITIAL "" POSITION 7 ORDER 50
+
+ADD INDEX "logId" ON "AuditLog" AREA "Index Area" UNIQUE PRIMARY INDEX-FIELD "logId" ASCENDING
+.
+PSC
+cpstream=ISO8859-1
+.

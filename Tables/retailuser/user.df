@@ -1,0 +1,76 @@
+ADD TABLE "retailuser"
+  AREA "Data Area"
+  DESCRIPTION "The User table contains User information including Username , password ,retailuserid,isAdmin etc."
+  DUMP-NAME "retailuser"
+  
+
+ADD FIELD "retailuserid" OF "retailuser" AS integer 
+  FORMAT ">>>>9"
+  INITIAL "0"
+  LABEL "Cust Num"
+  POSITION 3
+  MAX-WIDTH 4
+  VALEXP "retailuserid > 0"
+  VALMSG "retailuserid must be greater than zero"
+  HELP "Please enter a User number."
+  ORDER 10
+
+ADD FIELD "username" OF "retailuser" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "username"
+  POSITION 4
+  MAX-WIDTH 60
+  HELP "Please enter a username."
+  ORDER 20
+  
+  ADD FIELD "isAdmin" OF "retailuser" AS LOGICAL 
+  FORMAT "TRUE/FALSE"
+  INITIAL ""
+  LABEL "isAdmin"
+  POSITION 5
+  MAX-WIDTH 17
+  ORDER 30
+
+ADD FIELD "password" OF "retailuser" AS character 
+  FORMAT "x(15)"
+  INITIAL ""
+  LABEL "password"
+  POSITION 6
+  MAX-WIDTH 70
+  HELP "Please enter an password."
+  ORDER 40
+
+  ADD FIELD "islocked" OF "retailuser" AS LOGICAL 
+  FORMAT "TRUE/FALSE"
+  INITIAL ""
+  LABEL "locked"
+  POSITION 7
+  MAX-WIDTH 17
+  ORDER 50
+
+
+ADD FIELD "attempts" OF "retailuser" AS integer 
+  FORMAT ">9"
+  INITIAL "0"
+  LABEL "attempts"
+  POSITION 8
+  MAX-WIDTH 3
+  VALEXP "attempts >= 0"
+  ORDER 60
+
+ADD INDEX "retailuserid" ON "retailuser" 
+  AREA "Index Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "retailuserid" ASCENDING 
+
+ADD INDEX "username" ON "retailuser" 
+  AREA "Index Area"
+  INDEX-FIELD "username" ASCENDING 
+  
+.
+PSC
+cpstream=ISO8859-1
+.
+0000005045

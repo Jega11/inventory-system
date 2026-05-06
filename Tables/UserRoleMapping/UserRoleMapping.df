@@ -1,0 +1,12 @@
+ADD TABLE "UserRoleMapping"
+  AREA "Data Area"
+  DUMP-NAME "UserRoleMapping"
+
+ADD FIELD "userId" OF "UserRoleMapping" AS integer FORMAT ">>>>9" INITIAL "0" POSITION 3 ORDER 10
+ADD FIELD "roleId" OF "UserRoleMapping" AS integer FORMAT ">>>>9" INITIAL "0" POSITION 4 ORDER 20
+
+ADD INDEX "userRoleIdx" ON "UserRoleMapping" AREA "Index Area" UNIQUE PRIMARY INDEX-FIELD "userId" ASCENDING INDEX-FIELD "roleId" ASCENDING
+.
+PSC
+cpstream=ISO8859-1
+.

@@ -1,0 +1,74 @@
+ADD TABLE "ProductMaster"
+  AREA "Data Area"
+  DESCRIPTION "The ProductMaster table contains product information including productname , category ,ProductMasterid,etc."
+  DUMP-NAME "ProductMaster"
+
+
+ADD FIELD "productid" OF "ProductMaster" AS integer 
+  FORMAT ">>>>9"
+  INITIAL "0"
+  LABEL "productid"
+  POSITION 3
+  MAX-WIDTH 4
+  VALEXP "productid > 0"
+  VALMSG "productid must be greater than zero"
+  HELP "Please enter a productid."
+  ORDER 10
+
+ADD FIELD "productname" OF "ProductMaster" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "productname"
+  POSITION 4
+  MAX-WIDTH 60
+  HELP "Please enter a productname."
+  ORDER 20
+  
+  
+ADD FIELD "category" OF "ProductMaster" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "category"
+  POSITION 5
+  MAX-WIDTH 70
+  HELP "Please enter an category."
+  ORDER 30
+  
+ ADD FIELD "price" OF "ProductMaster" AS integer 
+  FORMAT ">>>9"
+  INITIAL "0"
+  LABEL "price"
+  POSITION 6
+  MAX-WIDTH 3
+  VALEXP "price >= 0"
+  ORDER 40
+  
+
+ADD FIELD "stockquantity" OF "ProductMaster" AS integer 
+  FORMAT ">>>9"
+  INITIAL "0"
+  LABEL "stockquantity"
+  POSITION 7
+  MAX-WIDTH 3
+  ORDER 50
+  
+  
+  
+  
+  
+
+ADD INDEX "productid" ON "ProductMaster" 
+  AREA "Index Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "productid" ASCENDING 
+
+ADD INDEX "productname" ON "ProductMaster" 
+  AREA "Index Area"
+  INDEX-FIELD "productname" ASCENDING 
+  
+.
+PSC
+cpstream=ISO8859-1
+.
+0000005045

@@ -1,0 +1,16 @@
+ADD TABLE "StockMovement"
+  AREA "Data Area"
+  DUMP-NAME "StockMovement"
+
+ADD FIELD "movementId" OF "StockMovement" AS integer FORMAT ">>>>9" INITIAL "0" POSITION 3 ORDER 10
+ADD FIELD "productId" OF "StockMovement" AS integer FORMAT ">>>>9" INITIAL "0" POSITION 4 ORDER 20
+ADD FIELD "type" OF "StockMovement" AS character FORMAT "x(20)" INITIAL "" POSITION 5 ORDER 30
+ADD FIELD "quantity" OF "StockMovement" AS integer FORMAT "->>>>9" INITIAL "0" POSITION 6 ORDER 40
+ADD FIELD "date" OF "StockMovement" AS DATE FORMAT "99/99/9999" INITIAL ? POSITION 7 ORDER 50
+ADD FIELD "referenceId" OF "StockMovement" AS integer FORMAT ">>>>9" INITIAL "0" POSITION 8 ORDER 60
+
+ADD INDEX "movementId" ON "StockMovement" AREA "Index Area" UNIQUE PRIMARY INDEX-FIELD "movementId" ASCENDING
+.
+PSC
+cpstream=ISO8859-1
+.

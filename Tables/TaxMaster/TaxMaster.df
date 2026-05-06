@@ -1,0 +1,13 @@
+ADD TABLE "TaxMaster"
+  AREA "Data Area"
+  DUMP-NAME "TaxMaster"
+
+ADD FIELD "taxId" OF "TaxMaster" AS integer FORMAT ">>>>9" INITIAL "0" POSITION 3 ORDER 10
+ADD FIELD "taxPercentage" OF "TaxMaster" AS decimal FORMAT "->,>>>,>>9.99" INITIAL "0" POSITION 4 DECIMALS 2 ORDER 20
+ADD FIELD "type" OF "TaxMaster" AS character FORMAT "x(20)" INITIAL "" POSITION 5 ORDER 30
+
+ADD INDEX "taxId" ON "TaxMaster" AREA "Index Area" UNIQUE PRIMARY INDEX-FIELD "taxId" ASCENDING
+.
+PSC
+cpstream=ISO8859-1
+.

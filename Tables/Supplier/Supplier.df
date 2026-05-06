@@ -1,0 +1,35 @@
+ADD TABLE "Supplier"
+  AREA "Data Area"
+  DESCRIPTION "The Supplier table"
+  DUMP-NAME "Supplier"
+
+ADD FIELD "supplierId" OF "Supplier" AS integer
+  FORMAT ">>>>9"
+  INITIAL "0"
+  POSITION 3
+  ORDER 10
+
+ADD FIELD "name" OF "Supplier" AS character
+  FORMAT "x(50)"
+  INITIAL ""
+  POSITION 4
+  ORDER 20
+
+ADD FIELD "phone" OF "Supplier" AS character
+  FORMAT "x(20)"
+  INITIAL ""
+  POSITION 5
+  ORDER 30
+
+ADD FIELD "address" OF "Supplier" AS character
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 6
+  ORDER 40
+
+ADD INDEX "supplierId" ON "Supplier"
+  AREA "Index Area" UNIQUE PRIMARY INDEX-FIELD "supplierId" ASCENDING
+.
+PSC
+cpstream=ISO8859-1
+.

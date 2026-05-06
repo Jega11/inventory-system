@@ -1,0 +1,16 @@
+ADD TABLE "SalesHeader"
+  AREA "Data Area"
+  DUMP-NAME "SalesHeader"
+
+ADD FIELD "invoiceId" OF "SalesHeader" AS integer FORMAT ">>>>9" INITIAL "0" POSITION 3 ORDER 10
+ADD FIELD "customerId" OF "SalesHeader" AS integer FORMAT ">>>>9" INITIAL "0" POSITION 4 ORDER 20
+ADD FIELD "date" OF "SalesHeader" AS DATE FORMAT "99/99/9999" INITIAL ? POSITION 5 ORDER 30
+ADD FIELD "totalAmount" OF "SalesHeader" AS decimal FORMAT "->,>>>,>>9.99" INITIAL "0" POSITION 6 DECIMALS 2 ORDER 40
+ADD FIELD "taxAmount" OF "SalesHeader" AS decimal FORMAT "->,>>>,>>9.99" INITIAL "0" POSITION 7 DECIMALS 2 ORDER 50
+ADD FIELD "netAmount" OF "SalesHeader" AS decimal FORMAT "->,>>>,>>9.99" INITIAL "0" POSITION 8 DECIMALS 2 ORDER 60
+
+ADD INDEX "invoiceId" ON "SalesHeader" AREA "Index Area" UNIQUE PRIMARY INDEX-FIELD "invoiceId" ASCENDING
+.
+PSC
+cpstream=ISO8859-1
+.

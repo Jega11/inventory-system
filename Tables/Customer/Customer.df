@@ -1,0 +1,66 @@
+ADD TABLE "Customer"
+  AREA "Data Area"
+  DESCRIPTION "The Customer table"
+  DUMP-NAME "Customer"
+
+ADD FIELD "customerId" OF "Customer" AS integer
+  FORMAT ">>>>9"
+  INITIAL "0"
+  LABEL "customerId"
+  POSITION 3
+  MAX-WIDTH 4
+  VALEXP "customerId > 0"
+  ORDER 10
+
+ADD FIELD "name" OF "Customer" AS character
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "name"
+  POSITION 4
+  MAX-WIDTH 100
+  ORDER 20
+
+ADD FIELD "phone" OF "Customer" AS character
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "phone"
+  POSITION 5
+  MAX-WIDTH 40
+  ORDER 30
+
+ADD FIELD "email" OF "Customer" AS character
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "email"
+  POSITION 6
+  MAX-WIDTH 100
+  ORDER 40
+
+ADD FIELD "address" OF "Customer" AS character
+  FORMAT "x(100)"
+  INITIAL ""
+  LABEL "address"
+  POSITION 7
+  MAX-WIDTH 200
+  ORDER 50
+
+ADD FIELD "creditLimit" OF "Customer" AS decimal
+  FORMAT "->,>>>,>>9.99"
+  INITIAL "0.0"
+  LABEL "creditLimit"
+  POSITION 8
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 60
+
+ADD INDEX "customerId" ON "Customer"
+  AREA "Index Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "customerId" ASCENDING
+
+.
+PSC
+cpstream=ISO8859-1
+.
+0000005045

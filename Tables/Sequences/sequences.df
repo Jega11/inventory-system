@@ -1,0 +1,24 @@
+ADD SEQUENCE "invoice_seq"
+  INITIAL 1
+  INCREMENT 1
+  CYCLE-ON-LIMIT no
+
+ADD SEQUENCE "salesdetail_seq"
+  INITIAL 1
+  INCREMENT 1
+  CYCLE-ON-LIMIT no
+
+ADD SEQUENCE "purchase_seq"
+  INITIAL 1
+  INCREMENT 1
+  CYCLE-ON-LIMIT no
+
+ADD SEQUENCE "movement_seq"
+  INITIAL 1
+  INCREMENT 1
+  CYCLE-ON-LIMIT no
+
+.
+PSC
+cpstream=ISO8859-1
+.

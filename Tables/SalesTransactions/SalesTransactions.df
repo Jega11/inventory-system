@@ -1,0 +1,77 @@
+ ADD TABLE "SalesTransaction"
+  AREA "Data Area"
+  DESCRIPTION "The SalesTransaction table contains SalesTransaction information including productid,transactionid,etc."
+  DUMP-NAME "SalesTransaction"
+
+
+ ADD FIELD "transactionid" OF "SalesTransaction" AS integer 
+  FORMAT ">>>>9"
+  INITIAL "0"
+  LABEL "transaction id"
+  POSITION 3
+  MAX-WIDTH 4
+  VALEXP "transactionid > 0"
+  VALMSG "transactionid must be greater than zero"
+  HELP "Please enter a transactionid."
+  ORDER 10
+
+ ADD FIELD "transactiondate" OF "SalesTransaction" AS DATE 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "transaction date"
+  POSITION 4
+  MAX-WIDTH 60
+  HELP "Please enter a transactiondate."
+  ORDER 20
+  
+ ADD FIELD "productid" OF "SalesTransaction" AS integer 
+  FORMAT ">>>>9"
+  LABEL "productid"
+  POSITION 5
+  MAX-WIDTH 4
+  VALEXP "productid > 0"
+  VALMSG "productid must be greater than zero"
+  HELP "Please enter productid."
+  ORDER 30
+  
+ ADD FIELD "quantitysold" OF "SalesTransaction" AS integer 
+  FORMAT ">>>>9"
+  INITIAL "0"
+  LABEL "quantitysold"
+  POSITION 6
+  MAX-WIDTH 3
+  VALEXP "quantitysold >= 0"
+  ORDER 40
+
+  
+ ADD FIELD "totalprice" OF "SalesTransaction" AS decimal 
+  FORMAT "->,>>>,>>9.999"
+  LABEL "totalprice"
+  POSITION 7
+  MAX-WIDTH 17
+  HELP "Please enter totalprice."
+  DECIMALS 3
+  ORDER 50
+  
+
+
+ADD INDEX "transactionid" ON "SalesTransaction" 
+  AREA "Index Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "transactionid" ASCENDING 
+
+ADD INDEX "productid" ON "SalesTransaction" 
+  AREA "Index Area"
+  INDEX-FIELD "productid" ASCENDING 
+ 
+  
+  
+
+
+
+.
+PSC
+cpstream=ISO8859-1
+.
+0000005045

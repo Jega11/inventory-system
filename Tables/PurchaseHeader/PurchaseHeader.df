@@ -1,0 +1,14 @@
+ADD TABLE "PurchaseHeader"
+  AREA "Data Area"
+  DUMP-NAME "PurchaseHeader"
+
+ADD FIELD "purchaseId" OF "PurchaseHeader" AS integer FORMAT ">>>>9" INITIAL "0" POSITION 3 ORDER 10
+ADD FIELD "supplierId" OF "PurchaseHeader" AS integer FORMAT ">>>>9" INITIAL "0" POSITION 4 ORDER 20
+ADD FIELD "date" OF "PurchaseHeader" AS DATE FORMAT "99/99/9999" INITIAL ? POSITION 5 ORDER 30
+ADD FIELD "totalAmount" OF "PurchaseHeader" AS decimal FORMAT "->,>>>,>>9.99" INITIAL "0" POSITION 6 DECIMALS 2 ORDER 40
+
+ADD INDEX "purchaseId" ON "PurchaseHeader" AREA "Index Area" UNIQUE PRIMARY INDEX-FIELD "purchaseId" ASCENDING
+.
+PSC
+cpstream=ISO8859-1
+.

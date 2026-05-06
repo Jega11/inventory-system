@@ -1,0 +1,15 @@
+ADD TABLE "SalesDetail"
+  AREA "Data Area"
+  DUMP-NAME "SalesDetail"
+
+ADD FIELD "salesDetailId" OF "SalesDetail" AS integer FORMAT ">>>>9" INITIAL "0" POSITION 3 ORDER 10
+ADD FIELD "invoiceId" OF "SalesDetail" AS integer FORMAT ">>>>9" INITIAL "0" POSITION 4 ORDER 20
+ADD FIELD "productId" OF "SalesDetail" AS integer FORMAT ">>>>9" INITIAL "0" POSITION 5 ORDER 30
+ADD FIELD "quantity" OF "SalesDetail" AS integer FORMAT ">>>>9" INITIAL "0" POSITION 6 ORDER 40
+ADD FIELD "price" OF "SalesDetail" AS decimal FORMAT "->,>>>,>>9.99" INITIAL "0" POSITION 7 DECIMALS 2 ORDER 50
+
+ADD INDEX "salesDetailId" ON "SalesDetail" AREA "Index Area" UNIQUE PRIMARY INDEX-FIELD "salesDetailId" ASCENDING
+.
+PSC
+cpstream=ISO8859-1
+.
