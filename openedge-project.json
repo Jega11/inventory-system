@@ -1,0 +1,55 @@
+{
+  "name": "Inventory-system", // Project name, will be used in the future for dependency management
+  "version": "1.0",    // Project version number, will be used in the future for dependency management
+  "oeversion": "12.8", // Must reference an existing ABL version in Settings -> Extensions -> ABL Configuration -> Runtimes
+  "graphicalMode": true, // True for prowin[32], false for _progres
+  "charset": "utf-8",  // Charset
+  "extraParameters": "", // Extra Progress command line parameters
+  "preprocessor": { // Customize parser behavior (optional)
+    // "windowSystem": "MS-WINDOWS",
+    // "processArchitecture": 32
+  },
+  // Extra extensions for main files ; modifying these files trigger a compilation, xref analysis, rcode update, ...
+  // Attribute is optional. The standard .p, .w, and .cls are always included by default
+  "mainFileExtensions": [ ".t", ".x" ],
+  // Use MAIN or INCLUDE to add files without extension to the project. These files are not added by default.
+  "noExtensionBehavior": "",
+  // Only required if your project use extensions other than ".i" for include files.
+  // If not specified, modifying files with such extension will not trigger a compilation
+  // .i is always included in the list
+  "includeFileExtensions": [ ".i" ],
+  "buildPath": [
+    // Entries can have type 'source' or 'propath'. Path attribute is mandatory. Build attribute is optional (defaults to 'path'). Xref attribute is optional (defaults to 'build/.pct' or '.builder/srcX')
+    // Source directories must be subdirectories of the project root directory. Relative paths are highly recommended.
+    { "type": "source", "path": "source"},
+    
+    //{ "type": "source", "path": "src/classes" },
+    // Include and exclude patterns are case-insensitive on Windows, and case-sensitive on any other operating system
+    //{ "type": "source", "path": "src/dev", "includes": "foo/**,bar/**", "excludes": "foo/something/**" },
+    { "type": "propath", "path": "${DLC}\\tty\\netlib\\OpenEdge.net.pl", "documentation": "openedge.json" }
+  ],
+  "dependencies": [
+    // Enable this section only if you have a working Nexus repository
+    // See discussion https://github.com/orgs/vscode-abl/discussions/432
+    // { "groupId": "com.progress.openedge",  "artifactId": "net", "version" : "12.8.9", "extension": "pl" },
+    // { "groupId": "com.progress.openedge", "artifactId": "core", "version" : "12.8.9", "extension": "apl" }
+  ],
+  //"buildDirectory": "build", // Optional global build directory
+  "buildDirectory":"rcode",
+  "dbConnections": [ // Unlimited number of connections - Beware of -h
+    {
+      "name": "inventory", // Logical name of database, or physical name if -ld is not used
+      "connect": "-db C:\\OpenEdge\\WRK\\Inventory -RO", // ABL connection string
+      "schemaFile": "C:\\OpenEdge\\WRK\\Inventory\\Inventory.df",   // Database schema, DF format
+      "aliases": [ "foo", "bar","dictdb"]    // List of aliases in ABL session
+    }
+  ],
+  "numThreads": 1, // Number of OpenEdge sessions handling build
+  "procedures": [
+    // List of procedures executed before the main entry point
+    // Init mode -> before setting propath and DB connections
+    // Once, persistent and super -> after setting propath and DB connections
+    //{ "name": "foo/bar.p", "mode": "once" /* Mode can be init, once, persistent or super */ }
+  ],
+  "profiles": [ /* See section below */ ]
+}
