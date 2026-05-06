@@ -33,7 +33,7 @@ DO TRANSACTION:
         /* Get User Role */
         DEFINE VARIABLE cRoleName AS CHARACTER NO-UNDO INITIAL "Unknown".
         FIND FIRST UserRoleMapping NO-LOCK
-             WHERE UserRoleMapping.userId = retailuser.retailuserid NO-ERROR.
+             WHERE UserRoleMapping.usrId = retailuser.retailuserid NO-ERROR.
         IF AVAILABLE UserRoleMapping THEN DO:
              FIND FIRST Role NO-LOCK
                   WHERE Role.roleId = UserRoleMapping.roleId NO-ERROR.
