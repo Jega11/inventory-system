@@ -14,7 +14,7 @@ DO TRANSACTION:
         WHERE retailuser.username = ipcUsername NO-ERROR.
 
     IF AVAILABLE retailuser THEN DO:
-        IF retailuser.password = ipcPassword THEN DO:
+        IF NOT retailuser.islocked AND retailuser.password = ipcPassword THEN DO:
             /* Success - reset attempts */
             ASSIGN
                 retailuser.attempts = 0

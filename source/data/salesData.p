@@ -10,7 +10,8 @@ oplSuccess = FALSE.
 DO TRANSACTION:
     DEFINE VARIABLE vInvoiceId AS INTEGER NO-UNDO.
 
-    FOR EACH ttSalesHeader:
+    FIND FIRST ttSalesHeader NO-ERROR.
+    IF AVAILABLE ttSalesHeader THEN DO:
         vInvoiceId = NEXT-VALUE(invoice_seq).
 
         CREATE SalesHeader.
@@ -25,11 +26,13 @@ DO TRANSACTION:
         ASSIGN ttSalesHeader.invoiceId = vInvoiceId. /* Return ID */
     END.
 
+    IF vInvoiceId = 0 THEN RETURN.
+
     FOR EACH ttSalesDetail:
         CREATE SalesDetail.
         ASSIGN
             SalesDetail.salesDetailId = NEXT-VALUE(salesdetail_seq)
-            SalesDetail.invoiceId     = vInvoiceId /* ✅ FIXED FK LINKAGE */
+            SalesDetail.invoiceId     = vInvoiceId
             SalesDetail.productId     = ttSalesDetail.productId
             SalesDetail.quantity      = ttSalesDetail.quantity
             SalesDetail.price         = ttSalesDetail.price.

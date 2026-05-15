@@ -10,7 +10,8 @@ oplSuccess = FALSE.
 DO TRANSACTION:
     DEFINE VARIABLE vPurchaseId AS INTEGER NO-UNDO.
 
-    FOR EACH ttPurchaseHeader:
+    FIND FIRST ttPurchaseHeader NO-ERROR.
+    IF AVAILABLE ttPurchaseHeader THEN DO:
         vPurchaseId = NEXT-VALUE(purchase_seq).
 
         CREATE PurchaseHeader.
@@ -23,10 +24,12 @@ DO TRANSACTION:
         ASSIGN ttPurchaseHeader.purchaseId = vPurchaseId. /* Return ID */
     END.
 
+    IF vPurchaseId = 0 THEN RETURN.
+
     FOR EACH ttPurchaseDetail:
         CREATE PurchaseDetail.
         ASSIGN
-            PurchaseDetail.purchaseDetailId = NEXT-VALUE(purchase_seq) /* Assuming same seq for details for demo, or could use its own */
+            PurchaseDetail.purchaseDetailId = NEXT-VALUE(purchase_seq)
             PurchaseDetail.purchaseId = vPurchaseId /* FK Linkage */
             PurchaseDetail.productId  = ttPurchaseDetail.productId
             PurchaseDetail.quantity   = ttPurchaseDetail.quantity

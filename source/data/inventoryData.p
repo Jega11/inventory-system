@@ -11,10 +11,16 @@ DO TRANSACTION:
         WHERE ProductMaster.productid = ipiProductId NO-ERROR.
 
     IF AVAILABLE ProductMaster THEN DO:
-        IF ipcType = "SALE" THEN
+        IF ipcType = "SALE" THEN DO:
             ProductMaster.stockquantity = ProductMaster.stockquantity - ipiQuantity.
-        ELSE IF ipcType = "PURCHASE" THEN
+        END.
+        ELSE IF ipcType = "PURCHASE" THEN DO:
             ProductMaster.stockquantity = ProductMaster.stockquantity + ipiQuantity.
+        END.
+        ELSE DO:
+            /* Unknown movement type: abort without creating a stock movement. */
+            RETURN.
+        END.
 
         CREATE StockMovement.
         ASSIGN
